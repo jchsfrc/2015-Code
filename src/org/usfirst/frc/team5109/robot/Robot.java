@@ -1,5 +1,6 @@
 package org.usfirst.frc.team5109.robot;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
@@ -19,7 +20,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Robot extends IterativeRobot {
     /**
      * This function is run when the robot is first started up and should be
-     * used for any initialization code.
+     * used for any initialization code. Testststseawerawefasdf
      */
 	//RobotDrive myRobot;  // class that handles basic drive operations
     Joystick leftStick;  // set to ID 1 in DriverStation
@@ -30,6 +31,7 @@ public class Robot extends IterativeRobot {
     double zRight;
     Encoder dioTest = new Encoder(0,1);
     Victor encoderMotor = new Victor(2); 
+    DigitalInput button=new DigitalInput(4);
     public Robot() {
        // myRobot = new RobotDrive(2, 1);
        // myRobot.setExpiration(0.1);
@@ -74,6 +76,13 @@ public class Robot extends IterativeRobot {
     	test7.set(rightStick.getY()*zRight);
     	encoderMotor.set(rightStick.getZ());
     	SmartDashboard.putNumber("encoder stuff", dioTest.get());
+    	
+    	if(button.get()){
+    		test1.set(leftStick.getY()*-1*zLeft);
+    	}
+    	else{
+    		test1.set(0);
+    	}
     }
     
     /**
